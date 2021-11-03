@@ -14,7 +14,7 @@ A starter template for [Snowflake Cloud Database](https://snowflake.com)
 * [Snowflake instance](https://trial.snowflake.com/) (takes 5min to setup, no credit card for 1 month)
 * [SnowSQL CLI](https://docs.snowflake.com/en/user-guide/snowsql.html) (optional)
 
-## 1. Run Examples on the Trial snowflake
+## Run Examples on the Trial snowflake
 
 Copy [first_run.sql](./examples/first_run.sql) into a worksheet and Run All. 
 
@@ -23,7 +23,7 @@ Or use the CLI
 snowsql -c <your_connection_name> -f first_run.sql
 ```
 
-## 2. Deploy Snowflake (done by an Admin)
+# Deploy Snowflake (done by an Admin) for CTF
 
 - Copy [ProdDatabaseCreation.sql](./db_admin/ProdDatabaseCreation.sql) into a worksheet and Run All. 
 - Copy [ProdRoleCreation.sql](./db_admin/ProdRoleCreation.sql) into a worksheet and Run All. 
