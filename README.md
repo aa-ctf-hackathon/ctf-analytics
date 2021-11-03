@@ -5,7 +5,6 @@ A starter template for [Snowflake Cloud Database](https://snowflake.com)
 * Snowflake offers a 1 month free trial, and with this repo you should be able to get a sense for the basics of Snowflake within an hour.
 * This template will create the necessary `ROLE`, `USER`, `DATABASE`, `SCHEMA` & `WAREHOUSE`(s) necessary to get up and running with Snowflake:
 
-![snowflake.png](/assets/snowflake_rn.png)
 
 
 # Usage
