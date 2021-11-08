@@ -2,7 +2,7 @@
 
 ## All about the Charity Day - KNOW BEFORE YOU GO!
 
-- [Teams Site for more info](https://teams.microsoft.com/_#/files/General?groupId=3030cf82-5b5c-4eb5-9a6b-0008ea494501&threadId=19%3AbcSCgLhhicTIaMjj3EnFPdnxBafabqiegsOdRLZh7lc1%40thread.tacv2&ctx=channel&context=CTF%2520Charity%2520Day&rootfolder=%252Fsites%252FDEAACharityEvents%252FShared%2520Documents%252FGeneral%252FCTF%2520Charity%2520Day)
+- [KNOW BEFORE YOU GO on MS Teams Site](https://teams.microsoft.com/_#/files/General?groupId=3030cf82-5b5c-4eb5-9a6b-0008ea494501&threadId=19%3AbcSCgLhhicTIaMjj3EnFPdnxBafabqiegsOdRLZh7lc1%40thread.tacv2&ctx=channel&context=CTF%2520Charity%2520Day&rootfolder=%252Fsites%252FDEAACharityEvents%252FShared%2520Documents%252FGeneral%252FCTF%2520Charity%2520Day)
 
 - Divvying up the questions for the teams is TBD
 - If you want to see some questions beyond what Simon has covered, take a look at these two documents: [1](https://spteam.aa.com/:w:/s/DEAACharityEvents/ESybbaEUjl9KvLeqZdnLt4kBlrALkFS5hyOINzs_3OfgJQ?e=psduxk) and [2](https://spteam.aa.com/:w:/s/DEAACharityEvents/EYKkylPDIaVAsma2gOMNVtMByrfO8nUg5k64DvTwJISb3Q?e=PA4Tya)
