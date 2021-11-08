@@ -6,8 +6,7 @@
 
 - Divvying up the questions for the teams is TBD
 - If you want to see some questions beyond what Simon has covered, take a look at these two documents: [1](https://spteam.aa.com/:w:/s/DEAACharityEvents/ESybbaEUjl9KvLeqZdnLt4kBlrALkFS5hyOINzs_3OfgJQ?e=psduxk) and [2](https://spteam.aa.com/:w:/s/DEAACharityEvents/EYKkylPDIaVAsma2gOMNVtMByrfO8nUg5k64DvTwJISb3Q?e=PA4Tya)
-
-Great video to watch on CTF's data from their SalesForce consultant, Kala: https://spteam.aa.com/:v:/s/DEAACharityEvents/ESQM2zGfRC1NlWRonjDhJq8Ba9W5Lvc7ndBaXw2_pkQY2Q?e=WjY5MB
+- Great [video](https://spteam.aa.com/:v:/s/DEAACharityEvents/ESQM2zGfRC1NlWRonjDhJq8Ba9W5Lvc7ndBaXw2_pkQY2Q?e=WjY5MB) to watch on CTF's data from their SalesForce consultant, Kala
 
 ## Snowflake as the Data warehouse
 A starter template for [Snowflake Cloud Database](https://snowflake.com)
