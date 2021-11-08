@@ -1,6 +1,6 @@
 # CTF Analytics
 
-## All about the Charity Day
+## All about the Charity Day - KNOW BEFORE YOU GO!
 
 - [Teams Site for more info](https://teams.microsoft.com/_#/files/General?groupId=3030cf82-5b5c-4eb5-9a6b-0008ea494501&threadId=19%3AbcSCgLhhicTIaMjj3EnFPdnxBafabqiegsOdRLZh7lc1%40thread.tacv2&ctx=channel&context=CTF%2520Charity%2520Day&rootfolder=%252Fsites%252FDEAACharityEvents%252FShared%2520Documents%252FGeneral%252FCTF%2520Charity%2520Day)
 
