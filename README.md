@@ -46,8 +46,6 @@ snowsql -c <your_connection_name> -f ProdRoleCreation.sql
 snowsql -c <your_connection_name> -f ProdFuncUserCreation.sql
 snowsql -c <your_connection_name> -f ProdUserCreation.sql
 ```
-
-
 ### Infrastructure Details
 The following is created, as described in [first_run.sql](/first_run.sql)
 ```
@@ -80,6 +78,11 @@ The following is created, as described in [first_run.sql](/first_run.sql)
 │   ├── ctf_<firstname>_<lastname>       # eg: ctf_simon_vukelj
 
 ```
+### Roles Mapping
+
+![MicrosoftTeams-image (25)](https://user-images.githubusercontent.com/69059535/141008283-723bf9cb-e5bc-46a8-bc90-6b9511dd0b9e.png)
+
+
 
 ## 2. Test
 
