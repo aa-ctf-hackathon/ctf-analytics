@@ -14,7 +14,8 @@
 ------------------
 -- TEST LOAD
 ------------------
-USE ROLE prod_db_sndbx_rwx_rl; 
+-- By default, all DE users have the DE role which means we can do sandbox queries
+-- USE ROLE prod_db_sndbx_rwx_rl; 
 USE WAREHOUSE PROD_ADHOC_WH;
 CREATE OR REPLACE SCHEMA prod_sbx_raw.SOURCE_NAME;
 
