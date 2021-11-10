@@ -55,9 +55,10 @@ The following is created, as described in [first_run.sql](/first_run.sql)
 │   └── PROD_CTF_USE                    # GOLD LAYER: This database contains tables and views accessible to analysts and reporting
 │   └── PROD_CTF_SANDBOX                # EXPERIMENT LAYER: This database contains tables and views created in the sandbox or experiment phase
 ├── WAREHOUSES
-│   ├── WAREHOUSE_INGEST                # Tools like Matillion will use this warehouse to perform loads of new data
-│   ├── WAREHOUSE_TRANSFORM             # This is the warehouse that dataform/dbt will use to perform all data transformations
-│   ├── WAREHOUSE_REPORT                # BI tools will connect to this warehouse to run analytical queries
+│   ├── PROD_INGEST_WH                  # Tools like Matillion will use this warehouse to perform loads of new data
+│   ├── PROD_TRF_WH                     # Either use tools like Matillion or simple SQL to transform existing data into business views or Silver/Gold data layer
+│   ├── PROD_ADHOC_WH                   # This is the warehouse that data engineers can connect to
+│   ├── PROD_BI_WH                      # BI tools will connect to this warehouse to run analytical queries
 ├── ROLES
 │   ├── prod_db_gbl_r_rl                # Global read role
 │   ├── prod_db_raw_crwx_rl             # Raw database create/read/write role 
