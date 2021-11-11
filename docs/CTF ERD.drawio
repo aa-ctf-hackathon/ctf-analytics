@@ -134,10 +134,10 @@
                 <mxCell id="n5yl7cHQrkEVSj0UQ_Ea-63" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" parent="n5yl7cHQrkEVSj0UQ_Ea-13" vertex="1">
                     <mxGeometry y="150" width="250" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="n5yl7cHQrkEVSj0UQ_Ea-64" value="FK4" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;" parent="n5yl7cHQrkEVSj0UQ_Ea-63" vertex="1">
+                <mxCell id="n5yl7cHQrkEVSj0UQ_Ea-64" value="" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;" parent="n5yl7cHQrkEVSj0UQ_Ea-63" vertex="1">
                     <mxGeometry width="30" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="n5yl7cHQrkEVSj0UQ_Ea-65" value="RECORDTYPEID STRING NOT NULL" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" parent="n5yl7cHQrkEVSj0UQ_Ea-63" vertex="1">
+                <mxCell id="n5yl7cHQrkEVSj0UQ_Ea-65" value="" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" parent="n5yl7cHQrkEVSj0UQ_Ea-63" vertex="1">
                     <mxGeometry x="30" width="220" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="n5yl7cHQrkEVSj0UQ_Ea-27" value="CTF_SF_OPPORTUNITYCONTACTROLE" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;" parent="1" vertex="1">
@@ -217,10 +217,10 @@
                 <mxCell id="n5yl7cHQrkEVSj0UQ_Ea-50" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" parent="n5yl7cHQrkEVSj0UQ_Ea-43" vertex="1">
                     <mxGeometry y="90" width="250" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="n5yl7cHQrkEVSj0UQ_Ea-51" value="" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;" parent="n5yl7cHQrkEVSj0UQ_Ea-50" vertex="1">
+                <mxCell id="n5yl7cHQrkEVSj0UQ_Ea-51" value="FK2" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;" parent="n5yl7cHQrkEVSj0UQ_Ea-50" vertex="1">
                     <mxGeometry width="30" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="n5yl7cHQrkEVSj0UQ_Ea-52" value="" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" parent="n5yl7cHQrkEVSj0UQ_Ea-50" vertex="1">
+                <mxCell id="n5yl7cHQrkEVSj0UQ_Ea-52" value="RECORDTYPEID STRING NOT NULL" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" parent="n5yl7cHQrkEVSj0UQ_Ea-50" vertex="1">
                     <mxGeometry x="30" width="220" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="n5yl7cHQrkEVSj0UQ_Ea-61" value="" style="edgeStyle=entityRelationEdgeStyle;endArrow=ERzeroToMany;startArrow=ERone;endFill=1;startFill=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="n5yl7cHQrkEVSj0UQ_Ea-47" target="C-vyLk0tnHw3VtMMgP7b-17" edge="1">
@@ -237,6 +237,12 @@
                 </mxCell>
                 <mxCell id="n5yl7cHQrkEVSj0UQ_Ea-66" value="&lt;div&gt;&lt;b&gt;There are only 2 RecordTypeID types: &lt;/b&gt;&lt;br&gt;1. 012G0000001BKhtIAG = Organization&lt;/div&gt;&lt;div&gt;2. 012G0000001BKhsIAG = Household&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="780" y="390" width="250" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="" style="edgeStyle=entityRelationEdgeStyle;endArrow=ERzeroToMany;startArrow=ERone;endFill=1;startFill=0;" edge="1" parent="1" source="n5yl7cHQrkEVSj0UQ_Ea-50" target="n5yl7cHQrkEVSj0UQ_Ea-13">
+                    <mxGeometry width="100" height="100" relative="1" as="geometry">
+                        <mxPoint x="920" y="290" as="sourcePoint"/>
+                        <mxPoint x="840" y="290" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
             </root>
         </mxGraphModel>
