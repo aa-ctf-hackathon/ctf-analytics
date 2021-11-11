@@ -1,0 +1,2097 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20211.21.0320.1853                               -->
+<workbook original-version='18.1' source-build='2021.1.0 (20211.21.0320.1853)' source-platform='win' version='18.1' xml:base='https://tableau.aa.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <repository-location id='Book5' path='/workbooks' revision='1.0' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Custom SQL Query (SRC_CLASSY)' inline='true' name='federated.0mubifr1nq314l1fmx8q60o6w805' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='rea56340.us-east-1.snowflakecomputing.com' name='snowflake.1yr1zk70x570xt11t95190wxdmuy'>
+            <connection authentication='Username Password' class='snowflake' dbname='CTF_RAW' odbc-connect-string-extras='' one-time-sql='' schema='SRC_CLASSY' server='rea56340.us-east-1.snowflakecomputing.com' service='' username='aa_sheng_xu' warehouse='PROD_TRF_WH' workgroup-auth-mode='prompt' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='snowflake.1yr1zk70x570xt11t95190wxdmuy' name='Custom SQL Query' type='text'>SELECT&#13;
+LEAD_RATING,&#13;
+SUM(TOTAL_DONATION_AMOUNT) AS TOTAL_DONATED,&#13;
+CAST(AVG(TOTAL_DONATION_AMOUNT) AS DECIMAL(20,2)) AS AVERAGE_TOTAL_DONATED,&#13;
+SUM(NUMBER_OF_TIMES_DONATED) AS NUMBER_OF_DONATIONS,&#13;
+CAST(AVG(NUMBER_OF_TIMES_DONATED) AS INT) AS AVERAGE_NUMBER_OF_DONATIONS&#13;
+FROM (&#13;
+SELECT&#13;
+A.NAME,&#13;
+A.ID,&#13;
+MAX(HIGHEST_LEAD_RATING_FORMULA__C) AS LEAD_RATING,&#13;
+MAX(NPO02__AVERAGEAMOUNT__C) AS AVERAGE_DONATION_AMOUNT,&#13;
+MAX(NPE01__LIFETIMEDONATIONHISTORY_NUMBER__C) AS NUMBER_OF_TIMES_DONATED,&#13;
+MAX(NPE01__LIFETIMEDONATIONHISTORY_AMOUNT__C) AS TOTAL_DONATION_AMOUNT,&#13;
+MAX(EXPECTEDREVENUE) AS EXPECTED_REVENUE&#13;
+FROM &quot;PROD_CTF_CLEAN&quot;.&quot;CTF_CLEAN_T9&quot;.&quot;ACCOUNT&quot; A&#13;
+INNER JOIN &quot;PROD_CTF_CLEAN&quot;.&quot;CTF_CLEAN_T9&quot;.&quot;OPPORTUNITY&quot; O&#13;
+ON A.ID = O.ACCOUNTID&#13;
+WHERE ISCLOSED = &apos;TRUE&apos; AND ISWON = &apos;TRUE&apos; AND STAGENAME = &apos;Received&apos;&#13;
+GROUP BY A.ID, A.NAME&#13;
+) A&#13;
+GROUP BY LEAD_RATING&#13;
+ORDER BY LEAD_RATING DESC</_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='snowflake.1yr1zk70x570xt11t95190wxdmuy' name='Custom SQL Query' type='text'>SELECT&#13;
+LEAD_RATING,&#13;
+SUM(TOTAL_DONATION_AMOUNT) AS TOTAL_DONATED,&#13;
+CAST(AVG(TOTAL_DONATION_AMOUNT) AS DECIMAL(20,2)) AS AVERAGE_TOTAL_DONATED,&#13;
+SUM(NUMBER_OF_TIMES_DONATED) AS NUMBER_OF_DONATIONS,&#13;
+CAST(AVG(NUMBER_OF_TIMES_DONATED) AS INT) AS AVERAGE_NUMBER_OF_DONATIONS&#13;
+FROM (&#13;
+SELECT&#13;
+A.NAME,&#13;
+A.ID,&#13;
+MAX(HIGHEST_LEAD_RATING_FORMULA__C) AS LEAD_RATING,&#13;
+MAX(NPO02__AVERAGEAMOUNT__C) AS AVERAGE_DONATION_AMOUNT,&#13;
+MAX(NPE01__LIFETIMEDONATIONHISTORY_NUMBER__C) AS NUMBER_OF_TIMES_DONATED,&#13;
+MAX(NPE01__LIFETIMEDONATIONHISTORY_AMOUNT__C) AS TOTAL_DONATION_AMOUNT,&#13;
+MAX(EXPECTEDREVENUE) AS EXPECTED_REVENUE&#13;
+FROM &quot;PROD_CTF_CLEAN&quot;.&quot;CTF_CLEAN_T9&quot;.&quot;ACCOUNT&quot; A&#13;
+INNER JOIN &quot;PROD_CTF_CLEAN&quot;.&quot;CTF_CLEAN_T9&quot;.&quot;OPPORTUNITY&quot; O&#13;
+ON A.ID = O.ACCOUNTID&#13;
+WHERE ISCLOSED = &apos;TRUE&apos; AND ISWON = &apos;TRUE&apos; AND STAGENAME = &apos;Received&apos;&#13;
+GROUP BY A.ID, A.NAME&#13;
+) A&#13;
+GROUP BY LEAD_RATING&#13;
+ORDER BY LEAD_RATING DESC</_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>LEAD_RATING</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[LEAD_RATING]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>LEAD_RATING</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_AE0A43C1B5484D5AB0D09549D1888FEB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TOTAL_DONATED</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[TOTAL_DONATED]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>TOTAL_DONATED</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>30</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_AE0A43C1B5484D5AB0D09549D1888FEB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AVERAGE_TOTAL_DONATED</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[AVERAGE_TOTAL_DONATED]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>AVERAGE_TOTAL_DONATED</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>20</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_AE0A43C1B5484D5AB0D09549D1888FEB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NUMBER_OF_DONATIONS</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[NUMBER_OF_DONATIONS]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>NUMBER_OF_DONATIONS</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DOUBLE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_AE0A43C1B5484D5AB0D09549D1888FEB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AVERAGE_NUMBER_OF_DONATIONS</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[AVERAGE_NUMBER_OF_DONATIONS]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>AVERAGE_NUMBER_OF_DONATIONS</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>38</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_AE0A43C1B5484D5AB0D09549D1888FEB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column aggregation='Sum' datatype='real' name='[LEAD_RATING]' role='dimension' type='ordinal' />
+      <_.fcp.ObjectModelTableType.true...column caption='Custom SQL Query' datatype='table' name='[__tableau_internal_object_id__].[_AE0A43C1B5484D5AB0D09549D1888FEB]' role='measure' type='quantitative' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Custom SQL Query' id='_AE0A43C1B5484D5AB0D09549D1888FEB'>
+            <properties context=''>
+              <relation connection='snowflake.1yr1zk70x570xt11t95190wxdmuy' name='Custom SQL Query' type='text'>SELECT&#13;
+LEAD_RATING,&#13;
+SUM(TOTAL_DONATION_AMOUNT) AS TOTAL_DONATED,&#13;
+CAST(AVG(TOTAL_DONATION_AMOUNT) AS DECIMAL(20,2)) AS AVERAGE_TOTAL_DONATED,&#13;
+SUM(NUMBER_OF_TIMES_DONATED) AS NUMBER_OF_DONATIONS,&#13;
+CAST(AVG(NUMBER_OF_TIMES_DONATED) AS INT) AS AVERAGE_NUMBER_OF_DONATIONS&#13;
+FROM (&#13;
+SELECT&#13;
+A.NAME,&#13;
+A.ID,&#13;
+MAX(HIGHEST_LEAD_RATING_FORMULA__C) AS LEAD_RATING,&#13;
+MAX(NPO02__AVERAGEAMOUNT__C) AS AVERAGE_DONATION_AMOUNT,&#13;
+MAX(NPE01__LIFETIMEDONATIONHISTORY_NUMBER__C) AS NUMBER_OF_TIMES_DONATED,&#13;
+MAX(NPE01__LIFETIMEDONATIONHISTORY_AMOUNT__C) AS TOTAL_DONATION_AMOUNT,&#13;
+MAX(EXPECTEDREVENUE) AS EXPECTED_REVENUE&#13;
+FROM &quot;PROD_CTF_CLEAN&quot;.&quot;CTF_CLEAN_T9&quot;.&quot;ACCOUNT&quot; A&#13;
+INNER JOIN &quot;PROD_CTF_CLEAN&quot;.&quot;CTF_CLEAN_T9&quot;.&quot;OPPORTUNITY&quot; O&#13;
+ON A.ID = O.ACCOUNTID&#13;
+WHERE ISCLOSED = &apos;TRUE&apos; AND ISWON = &apos;TRUE&apos; AND STAGENAME = &apos;Received&apos;&#13;
+GROUP BY A.ID, A.NAME&#13;
+) A&#13;
+GROUP BY LEAD_RATING&#13;
+ORDER BY LEAD_RATING DESC</relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <repository-location id='Sheet1' path='/workbooks/Book5' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Custom SQL Query (SRC_CLASSY)' name='federated.0mubifr1nq314l1fmx8q60o6w805' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0mubifr1nq314l1fmx8q60o6w805'>
+            <column datatype='real' name='[AVERAGE_NUMBER_OF_DONATIONS]' role='measure' type='quantitative' />
+            <column datatype='real' name='[AVERAGE_TOTAL_DONATED]' role='measure' type='quantitative' />
+            <column aggregation='Sum' datatype='real' name='[LEAD_RATING]' role='dimension' type='ordinal' />
+            <column datatype='real' name='[NUMBER_OF_DONATIONS]' role='measure' type='quantitative' />
+            <column datatype='real' name='[TOTAL_DONATED]' role='measure' type='quantitative' />
+            <column-instance column='[AVERAGE_NUMBER_OF_DONATIONS]' derivation='Avg' name='[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[AVERAGE_TOTAL_DONATED]' derivation='Avg' name='[avg:AVERAGE_TOTAL_DONATED:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[NUMBER_OF_DONATIONS]' derivation='Avg' name='[avg:NUMBER_OF_DONATIONS:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[TOTAL_DONATED]' derivation='Avg' name='[avg:TOTAL_DONATED:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[LEAD_RATING]' derivation='None' name='[none:LEAD_RATING:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[LEAD_RATING]' derivation='None' name='[none:LEAD_RATING:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:ok]'>
+            <groupfilter function='level-members' level='[none:LEAD_RATING:ok]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='height' field='[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]' value='159' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='pane'>
+                <format attr='minheight' value='159' />
+                <format attr='maxheight' value='159' />
+                <format attr='minwidth' value='1124' />
+                <format attr='maxwidth' value='1124' />
+                <format attr='aspect' value='0' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='5' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='6' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-mode' value='selection' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk] + ([federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk] + ([federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk] + [federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk])))</rows>
+        <cols>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</cols>
+        <mark-labels>
+          <mark-label id='0' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>3.0</value>
+                <value>4152.8100000000004</value>
+                <value>60041.0</value>
+                <value>92885843.030000001</value>
+                <value>0.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='1' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>1.0</value>
+                <value>87.060000000000002</value>
+                <value>299005.0</value>
+                <value>17687329.039999999</value>
+                <value>1.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='2' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>3.0</value>
+                <value>377.44</value>
+                <value>114975.0</value>
+                <value>17128187.989999998</value>
+                <value>2.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='3' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>6.0</value>
+                <value>1484.6500000000001</value>
+                <value>36143.0</value>
+                <value>9544786.0</value>
+                <value>3.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='4' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>5.0</value>
+                <value>957.70000000000005</value>
+                <value>45785.0</value>
+                <value>9391217.2300000004</value>
+                <value>4.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='5' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>13.0</value>
+                <value>4000.21</value>
+                <value>30775.0</value>
+                <value>9760504.7200000007</value>
+                <value>5.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='6' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>20.0</value>
+                <value>9307.0799999999999</value>
+                <value>21093.0</value>
+                <value>9818974.4000000004</value>
+                <value>6.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='7' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>39.0</value>
+                <value>17205.959999999999</value>
+                <value>14361.0</value>
+                <value>6297379.5999999996</value>
+                <value>7.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='8' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>35.0</value>
+                <value>44515.419999999998</value>
+                <value>3857.0</value>
+                <value>4852180.7699999996</value>
+                <value>8.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='9' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>48.0</value>
+                <value>132316.91</value>
+                <value>2476.0</value>
+                <value>6880479.4000000004</value>
+                <value>9.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='10' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>39.0</value>
+                <value>107598.69</value>
+                <value>1360.0</value>
+                <value>3765954.1400000001</value>
+                <value>10.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='11' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>57.0</value>
+                <value>135891.56</value>
+                <value>1075.0</value>
+                <value>2581939.5499999998</value>
+                <value>11.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='12' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>75.0</value>
+                <value>619697.43000000005</value>
+                <value>677.0</value>
+                <value>5577276.8499999996</value>
+                <value>12.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='13' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>37.0</value>
+                <value>2686391.4399999999</value>
+                <value>258.0</value>
+                <value>18804740.09</value>
+                <value>13.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='16' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>37.0</value>
+                <value>2686391.4399999999</value>
+                <value>258.0</value>
+                <value>18804740.09</value>
+                <value>13.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='17' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>3.0</value>
+                <value>4152.8100000000004</value>
+                <value>60041.0</value>
+                <value>92885843.030000001</value>
+                <value>0.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='18' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>1.0</value>
+                <value>87.060000000000002</value>
+                <value>299005.0</value>
+                <value>17687329.039999999</value>
+                <value>1.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='19' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>3.0</value>
+                <value>377.44</value>
+                <value>114975.0</value>
+                <value>17128187.989999998</value>
+                <value>2.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='20' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>6.0</value>
+                <value>1484.6500000000001</value>
+                <value>36143.0</value>
+                <value>9544786.0</value>
+                <value>3.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='21' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>5.0</value>
+                <value>957.70000000000005</value>
+                <value>45785.0</value>
+                <value>9391217.2300000004</value>
+                <value>4.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='22' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>13.0</value>
+                <value>4000.21</value>
+                <value>30775.0</value>
+                <value>9760504.7200000007</value>
+                <value>5.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='23' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>20.0</value>
+                <value>9307.0799999999999</value>
+                <value>21093.0</value>
+                <value>9818974.4000000004</value>
+                <value>6.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='24' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>39.0</value>
+                <value>17205.959999999999</value>
+                <value>14361.0</value>
+                <value>6297379.5999999996</value>
+                <value>7.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='25' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>35.0</value>
+                <value>44515.419999999998</value>
+                <value>3857.0</value>
+                <value>4852180.7699999996</value>
+                <value>8.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='26' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>48.0</value>
+                <value>132316.91</value>
+                <value>2476.0</value>
+                <value>6880479.4000000004</value>
+                <value>9.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='27' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>39.0</value>
+                <value>107598.69</value>
+                <value>1360.0</value>
+                <value>3765954.1400000001</value>
+                <value>10.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='28' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>57.0</value>
+                <value>135891.56</value>
+                <value>1075.0</value>
+                <value>2581939.5499999998</value>
+                <value>11.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='29' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>75.0</value>
+                <value>619697.43000000005</value>
+                <value>677.0</value>
+                <value>5577276.8499999996</value>
+                <value>12.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='32' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>3.0</value>
+                <value>4152.8100000000004</value>
+                <value>60041.0</value>
+                <value>92885843.030000001</value>
+                <value>0.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='33' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>1.0</value>
+                <value>87.060000000000002</value>
+                <value>299005.0</value>
+                <value>17687329.039999999</value>
+                <value>1.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='34' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>3.0</value>
+                <value>377.44</value>
+                <value>114975.0</value>
+                <value>17128187.989999998</value>
+                <value>2.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='35' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>6.0</value>
+                <value>1484.6500000000001</value>
+                <value>36143.0</value>
+                <value>9544786.0</value>
+                <value>3.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='36' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>5.0</value>
+                <value>957.70000000000005</value>
+                <value>45785.0</value>
+                <value>9391217.2300000004</value>
+                <value>4.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='37' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>13.0</value>
+                <value>4000.21</value>
+                <value>30775.0</value>
+                <value>9760504.7200000007</value>
+                <value>5.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='38' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>20.0</value>
+                <value>9307.0799999999999</value>
+                <value>21093.0</value>
+                <value>9818974.4000000004</value>
+                <value>6.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='39' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>39.0</value>
+                <value>17205.959999999999</value>
+                <value>14361.0</value>
+                <value>6297379.5999999996</value>
+                <value>7.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='40' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>35.0</value>
+                <value>44515.419999999998</value>
+                <value>3857.0</value>
+                <value>4852180.7699999996</value>
+                <value>8.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='41' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>48.0</value>
+                <value>132316.91</value>
+                <value>2476.0</value>
+                <value>6880479.4000000004</value>
+                <value>9.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='42' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>39.0</value>
+                <value>107598.69</value>
+                <value>1360.0</value>
+                <value>3765954.1400000001</value>
+                <value>10.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='43' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>57.0</value>
+                <value>135891.56</value>
+                <value>1075.0</value>
+                <value>2581939.5499999998</value>
+                <value>11.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='44' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>75.0</value>
+                <value>619697.43000000005</value>
+                <value>677.0</value>
+                <value>5577276.8499999996</value>
+                <value>12.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='45' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>37.0</value>
+                <value>2686391.4399999999</value>
+                <value>258.0</value>
+                <value>18804740.09</value>
+                <value>13.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='48' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>3.0</value>
+                <value>4152.8100000000004</value>
+                <value>60041.0</value>
+                <value>92885843.030000001</value>
+                <value>0.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='49' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>1.0</value>
+                <value>87.060000000000002</value>
+                <value>299005.0</value>
+                <value>17687329.039999999</value>
+                <value>1.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='50' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>3.0</value>
+                <value>377.44</value>
+                <value>114975.0</value>
+                <value>17128187.989999998</value>
+                <value>2.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='51' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>6.0</value>
+                <value>1484.6500000000001</value>
+                <value>36143.0</value>
+                <value>9544786.0</value>
+                <value>3.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='52' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>5.0</value>
+                <value>957.70000000000005</value>
+                <value>45785.0</value>
+                <value>9391217.2300000004</value>
+                <value>4.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='53' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>13.0</value>
+                <value>4000.21</value>
+                <value>30775.0</value>
+                <value>9760504.7200000007</value>
+                <value>5.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='54' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>20.0</value>
+                <value>9307.0799999999999</value>
+                <value>21093.0</value>
+                <value>9818974.4000000004</value>
+                <value>6.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='55' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>39.0</value>
+                <value>17205.959999999999</value>
+                <value>14361.0</value>
+                <value>6297379.5999999996</value>
+                <value>7.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='56' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>35.0</value>
+                <value>44515.419999999998</value>
+                <value>3857.0</value>
+                <value>4852180.7699999996</value>
+                <value>8.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='57' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>48.0</value>
+                <value>132316.91</value>
+                <value>2476.0</value>
+                <value>6880479.4000000004</value>
+                <value>9.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='58' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>39.0</value>
+                <value>107598.69</value>
+                <value>1360.0</value>
+                <value>3765954.1400000001</value>
+                <value>10.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='59' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>57.0</value>
+                <value>135891.56</value>
+                <value>1075.0</value>
+                <value>2581939.5499999998</value>
+                <value>11.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='60' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>75.0</value>
+                <value>619697.43000000005</value>
+                <value>677.0</value>
+                <value>5577276.8499999996</value>
+                <value>12.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='61' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:AVERAGE_TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:NUMBER_OF_DONATIONS:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[avg:TOTAL_DONATED:qk]</field>
+                  <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>37.0</value>
+                <value>2686391.4399999999</value>
+                <value>258.0</value>
+                <value>18804740.09</value>
+                <value>13.0</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+        </mark-labels>
+      </table>
+      <simple-id uuid='{5F49EBEC-6CAD-472A-B20D-50D2E6AD1EE9}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:ok]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0mubifr1nq314l1fmx8q60o6w805].[none:LEAD_RATING:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{23979D68-2181-4D2A-BCAC-CA8BBBC0F4E2}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      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
+      ff//Awh4JgfFhIHoAAAAAElFTkSuQmCC
+    </thumbnail>
+  </thumbnails>
+</workbook>
