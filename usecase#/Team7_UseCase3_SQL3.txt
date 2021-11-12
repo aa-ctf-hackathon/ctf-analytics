@@ -1,0 +1,19 @@
+select
+gender__c donor_gender,
+MARITAL_STATUS__C donor_marital_status,
+have_nf_or_a_connection_to_nf__c nf_or_nf_cxn,
+TEA_PARTY_HOST__C tea_party_host,
+WALK_ORGANIZER__C walk_organizer,
+WALK_PARTICIPANT__C walk_participant,
+WORKPLACE_GIVING__C workplace_giving,
+CTF_STAFF__C ctf_staff,
+NF_HERO__C nf_hero,
+VOLUNTEER_STATUS__C volunteer_status,
+extract(year from t1.closedate) donation_year,
+count(*) total_count,
+sum(amount) total_gift_amount
+from prod_ctf_raw."SRC_SF"."CTF_SF_OPPORTUNITY" t1 join prod_ctf_raw."SRC_SF"."CTF_SF_CONTACT" t2
+ON t1.contactid = t2.id
+where extract(year from t1.closedate) > extract(year from current_date) - 5
+group by donor_gender, donor_marital_status, nf_or_nf_cxn, tea_party_host, walk_organizer, walk_participant, workplace_giving, ctf_staff, nf_hero, volunteer_status, donation_year
+order by donation_year;
