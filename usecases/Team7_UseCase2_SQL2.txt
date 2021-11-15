@@ -1,0 +1,18 @@
+select
+t2.billingstate donor_state,
+t3.STAYCLASSY__STATE__C campaign_state,
+t3.STAYCLASSY__ZIP__C campaign_zip_code,
+case
+when t2.recordtypeid = '012G0000001BKhsIAG' then 'household'
+when t2.recordtypeid = '012G0000001BKhtIAG' then 'organization'
+end account_record_type,
+extract(year from t1.closedate) donation_year,
+count(*) total_count,
+sum(amount) total_gift_amount
+from prod_ctf_raw."SRC_SF"."CTF_SF_OPPORTUNITY" t1 join prod_ctf_raw."SRC_SF"."CTF_SF_ACCOUNT" t2
+on t1.accountid = t2.id
+join prod_ctf_raw."SRC_SF"."CTF_SF_CAMPAIGN" t3
+ON t1.campaignid = t3.id
+where extract(year from t1.closedate) > extract(year from current_date) - 5
+group by donor_state, account_record_type, donation_year, campaign_state, campaign_zip_code
+order by donation_year, donor_state, account_record_type;

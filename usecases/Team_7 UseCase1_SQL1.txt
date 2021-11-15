@@ -1,0 +1,19 @@
+select
+case
+when t2.recordtypeid = '012G0000001BKhsIAG' then 'household'
+when t2.recordtypeid = '012G0000001BKhtIAG' then 'organization'
+end account_recrod_type,
+sum(case when t1.amount <= 999 then 1 end) R999,
+sum(case when t1.amount between 1000 and 4999 then 1 end) R1K_5K,
+sum(case when t1.amount between 5000 and 14999 then 1 end) R5K_15K,
+sum(case when t1.amount between 15000 and 24999 then 1 end) R15K_25K,
+sum(case when t1.amount between 25000 and 49999 then 1 end) R25K_50K,
+sum(case when t1.amount between 50000 and 99999 then 1 end) R50K_100K,
+sum(case when t1.amount between 100000 and 499999 then 1 end) R100K_500K,
+sum(case when t1.amount between 500000 and 999999 then 1 end) R500K_1M,
+extract(year from t1.closedate) donation_year
+from prod_ctf_raw."SRC_SF"."CTF_SF_OPPORTUNITY" t1 join prod_ctf_raw."SRC_SF"."CTF_SF_ACCOUNT" t2
+on t1.accountid = t2.id
+where extract(year from t1.closedate) > extract(year from current_date) - 5
+group by account_recrod_type, donation_year
+order by donation_year;
